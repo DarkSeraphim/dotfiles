@@ -2,6 +2,7 @@
   - [git submodule update --init --recursive, Installing submodules]
 - link:
     ~/.vimrc: {}
+    ~/.config/nvim/coc-settings.json: {}
     ~/.vim/ftplugin/:
       path: vim/ftplugin/*
       glob: true
