@@ -1,0 +1,7 @@
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+- link:
+    ~/.vimrc: {}
+    ~/.vim/ftplugin/:
+      path: vim/ftplugin/*
+      glob: true
