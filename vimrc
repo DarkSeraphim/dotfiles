@@ -25,6 +25,8 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 " File information
 Plug 'preservim/tagbar'
+" Git conflict resolving \o/
+Plug 'tpope/vim-fugitive'
 
 " These are highlighting plugins, per language
 Plug 'udalov/kotlin-vim'
@@ -84,7 +86,12 @@ function! SetupCommandAbbrs(from, to)
 
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
+inoremap <silent><expr> <c-space> coc#refresh()
 
+" Time for some fugitive config
+command Gresolve :Gvdiffsplit! 
+nnoremap <silent> m<Left> :diffget //2<CR>
+nnoremap <silent> m<Right> :diffget //3<CR>
 
 " Screw typos!
 call SetupCommandAlias("W","w")

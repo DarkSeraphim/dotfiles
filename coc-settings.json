@@ -1,3 +1,26 @@
 {
-  "coc.preferences.echodocSupport": true
+  "coc.preferences.echodocSupport": true,
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/usr/lib/jvm/java-11-openjdk-amd64",
+      "default": true
+    } 
+  ],
+  "java.maven.downloadSources": "true",
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve",
+        "--tf-exec",
+        "/home/mhendriks/.tfenv/bin/terraform"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {}
+    }
+  }
 }
