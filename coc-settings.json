@@ -22,5 +22,6 @@
       ],
       "initializationOptions": {}
     }
-  }
+  },
+  "powershell.integratedConsole.showOnStartup": false
 }
