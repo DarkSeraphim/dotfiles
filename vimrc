@@ -1,4 +1,6 @@
 " We load everything in .vim. Neovim supports this :)
+set nocompatible
+
 let data_dir = '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -29,14 +31,14 @@ Plug 'preservim/tagbar'
 Plug 'tpope/vim-fugitive'
 
 " These are highlighting plugins, per language
-Plug 'udalov/kotlin-vim'
-Plug 'vim-python/python-syntax'
-Plug 'leafgarland/typescript-vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'zigford/vim-powershell'
-Plug 'evanleck/vim-svelte'
-Plug 'hashivim/vim-terraform'
-
+" Plug 'udalov/kotlin-vim'
+" Plug 'vim-python/python-syntax'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'zigford/vim-powershell'
+" Plug 'evanleck/vim-svelte'
+" Plug 'hashivim/vim-terraform'
+Plug 'sheerun/vim-polyglot'
 " Memes
 Plug 'edvb/catium.vim'
 Plug 'koron/nyancat-vim'
@@ -87,9 +89,24 @@ function! SetupCommandAbbrs(from, to)
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <a-cr> :CocFix<CR> 
+inoremap <expr> ^[^M :CocFix<CR>
+
+
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
 
 " Time for some fugitive config
-command Gresolve :Gvdiffsplit! 
+" command Gresolve :Gvdiffsplit! 
 nnoremap <silent> m<Left> :diffget //2<CR>
 nnoremap <silent> m<Right> :diffget //3<CR>
 
