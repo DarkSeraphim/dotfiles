@@ -1,6 +1,8 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
 - link:
+    ~/.bash_aliases: {}
+    ~/.zshrc: {}
     ~/.vimrc: {}
     ~/.config/nvim/coc-settings.json: {}
     ~/.vim/ftplugin/:
