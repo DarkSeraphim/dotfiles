@@ -29,6 +29,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/tagbar'
 " Git conflict resolving \o/
 Plug 'tpope/vim-fugitive'
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " These are highlighting plugins, per language
 " Plug 'udalov/kotlin-vim'
