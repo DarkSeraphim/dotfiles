@@ -91,8 +91,7 @@ function! SetupCommandAbbrs(from, to)
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
 inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <a-cr> :CocFix<CR> 
-inoremap <expr> ^[^M :CocFix<CR>
+nnoremap <silent> <A-enter> :CocFix<CR> 
 
 
 
