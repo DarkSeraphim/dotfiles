@@ -128,6 +128,7 @@ export TERRAGRUNT_TFPATH=$HOME/.tfenv/bin/terraform
 complete -C $TERRAGRUNT_TFPATH terraform tf
 export win=/mnt/c/users/mevmh/
 export PATH=~/.local/bin:$PATH
+export PATH=~/.dotnet/tools:$PATH
 
 source ~/.bash_aliases
 
