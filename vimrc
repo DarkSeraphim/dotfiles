@@ -133,6 +133,10 @@ nnoremap <C-J> <C-W><C-H>
 nmap <silent> <C-z> <Plug>(ale_previous_wrap)
 nmap <silent> <C-x> <Plug>(ale_next_wrap)
 
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
 " Some more meme stuff
 set statusline+=%{g:Catium()}
 set laststatus=2
