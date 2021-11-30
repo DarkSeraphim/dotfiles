@@ -92,7 +92,7 @@ function! SetupCommandAbbrs(from, to)
 call SetupCommandAbbrs('C', 'CocConfig')
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> <A-enter> :CocFix<CR> 
-
+nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
