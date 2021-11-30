@@ -1,5 +1,5 @@
 {
-  "coc.preferences.echodocSupport": true,
+  "suggest.echodocSupport": true,
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-11",
@@ -7,7 +7,7 @@
       "default": true
     } 
   ],
-  "java.maven.downloadSources": "true",
+  "java.maven.downloadSources": true,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
@@ -21,6 +21,12 @@
         "tf"
       ],
       "initializationOptions": {}
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
     }
   },
   "powershell.integratedConsole.showOnStartup": false
