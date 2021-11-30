@@ -129,8 +129,12 @@ complete -C $TERRAGRUNT_TFPATH terraform tf
 export win=/mnt/c/users/mevmh/
 export PATH=~/.local/bin:$PATH
 export PATH=~/.dotnet/tools:$PATH
+# Go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 source ~/.bash_aliases
+source ~/.cargo/env
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/mhendriks/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mhendriks/google-cloud-sdk/path.zsh.inc'; fi
