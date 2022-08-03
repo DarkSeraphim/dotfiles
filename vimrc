@@ -1,5 +1,7 @@
 " We load everything in .vim. Neovim supports this :)
 set nocompatible
+set modeline
+set modelines=5
 
 let data_dir = '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -20,6 +22,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 " CoC is our completion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-scripts/dbext.vim'
 " NERDTree is our file tree
 Plug 'preservim/nerdtree'
 " airline provides the nice status bar. Also integrates with ALE for showing

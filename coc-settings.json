@@ -3,7 +3,7 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-11",
-      "path": "/usr/lib/jvm/java-11-openjdk-amd64",
+      "path": "/usr/lib/jvm/java-11-openjdk-amd64/",
       "default": true
     } 
   ],
@@ -27,6 +27,13 @@
       "args": ["--lsp"],
       "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
       "filetypes": ["haskell", "lhaskell"]
+    },
+    "azure-pipeline": {
+      "module": "/home/mhendriks/language-servers/azure-pipelines-language-server/language-server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["azure-pipeline"],
+      "rootPatterns": ".git",
+      "trace.server": "verbose"
     }
   },
   "powershell.integratedConsole.showOnStartup": false
