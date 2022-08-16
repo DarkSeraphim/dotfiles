@@ -35,6 +35,14 @@ Plug 'tpope/vim-fugitive'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+" Neotest
+Plug 'vim-test/vim-test'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-vim-test'
+
 " These are highlighting plugins, per language
 " Plug 'udalov/kotlin-vim'
 " Plug 'vim-python/python-syntax'
@@ -91,12 +99,62 @@ function! SetupCommandAbbrs(from, to)
             \ .'? ("'.a:to.'") : ("'.a:from.'"))'
   endfunction
 
+set updatetime=300
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Use C to open coc config
 call SetupCommandAbbrs('C', 'CocConfig')
 inoremap <silent><expr> <c-space> coc#refresh()
-nnoremap <silent> <A-enter> :CocFix<CR> 
-nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
+nnoremap <silent> <A-enter> <Plug>(coc-codeaction-selected)
 
+" Use K to show documentation in preview window.
+nnoremap <silent> <leader>h :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -139,6 +197,20 @@ nmap <silent> <C-x> <Plug>(ale_next_wrap)
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
+
+lua <<EOF
+  require("neotest").setup({
+  adapters = {
+    require("neotest-vim-test")({
+      ignore_file_types = { "python", "vim", "lua" },
+    }),
+  },
+})
+EOF
+
+command RunTests lua require('neotest').run.run(vim.fn.expand('%'))
+command OpenTestOutput lua require('neotest').output.open({enter = true})
+command ToggleTestSummary lua require("neotest").summary.toggle()
 
 " Some more meme stuff
 set statusline+=%{g:Catium()}

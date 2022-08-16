@@ -34,6 +34,11 @@
       "filetypes": ["azure-pipeline"],
       "rootPatterns": ".git",
       "trace.server": "verbose"
+    },
+    "omnisharp": {
+      "command": "OmniSharp",
+      "filetypes": ["cs"],
+      "rootPatterns": [".git", "*.sln", "*.csproj"]
     }
   },
   "powershell.integratedConsole.showOnStartup": false
