@@ -136,8 +136,11 @@ export PATH=$PATH:$(go env GOPATH)/bin
 source ~/.bash_aliases
 source ~/.cargo/env
 
+if [ -f "$HOME/.localrc" ]; then . "$HOME/.localrc"; fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/mhendriks/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mhendriks/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/mhendriks/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mhendriks/google-cloud-sdk/completion.zsh.inc'; fi
+[ -f "/home/mhendriks/.ghcup/env" ] && source "/home/mhendriks/.ghcup/env" # ghcup-env
