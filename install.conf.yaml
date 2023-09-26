@@ -4,7 +4,8 @@
     ~/.bash_aliases: {}
     ~/.zshrc: {}
     ~/.vimrc: {}
-    ~/.config/nvim/coc-settings.json: {}
+    ~/.config/nvim/coc-settings.json:
+      path: .config/ftplugin/coc-settings.json
     ~/.vim/ftplugin/:
       path: vim/ftplugin/*
       glob: true
