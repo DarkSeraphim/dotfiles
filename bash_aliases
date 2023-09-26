@@ -8,7 +8,10 @@ alias tg=terragrunt
 alias kctl=kubectl
 alias kc=kubectl
 alias tfenv=$HOME/.tfenv/bin/tfenv
-alias vim=nvim
+
+if command -v nvim > /dev/null; then
+  alias vim=nvim
+fi
 export WIN_USER=/mnt/c/Users/mevmh
 
 get_kubectl_secret() {

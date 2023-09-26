@@ -198,8 +198,9 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
 
-lua <<EOF
-  require("neotest").setup({
+if has('nvim')
+  lua <<EOF
+require("neotest").setup({
   adapters = {
     require("neotest-vim-test")({
       ignore_file_types = { "python", "vim", "lua" },
@@ -207,6 +208,7 @@ lua <<EOF
   },
 })
 EOF
+endif
 
 command RunTests lua require('neotest').run.run(vim.fn.expand('%'))
 command OpenTestOutput lua require('neotest').output.open({enter = true})

@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mhendriks/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -120,27 +120,35 @@ alias la='ls -A'
 alias l='ls -CF'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-source <(kubectl completion zsh)
+if command -v kubectl > /dev/null; then source <(kubectl completion zsh); fi
 
 export GPG_TTY=$(tty)
 export TERRAGRUNT_TFPATH=$HOME/.tfenv/bin/terraform
+export PATH=~/.tfenv/bin:$PATH
 complete -C $TERRAGRUNT_TFPATH terraform tf
 export win=/mnt/c/users/mevmh/
 export PATH=~/.local/bin:$PATH
 export PATH=~/.dotnet/tools:$PATH
 # Go
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+if command -v go > /dev/null; then
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
 
 source ~/.bash_aliases
-source ~/.cargo/env
+if [ -f "$HOME/.cargo/env" ]; then . ~/.cargo/env; fi
 
 if [ -f "$HOME/.localrc" ]; then . "$HOME/.localrc"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/mhendriks/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mhendriks/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/mhendriks/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mhendriks/google-cloud-sdk/completion.zsh.inc'; fi
-[ -f "/home/mhendriks/.ghcup/env" ] && source "/home/mhendriks/.ghcup/env" # ghcup-env
+if [ -f "$HOME/google-cloud-sdk/completion/.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

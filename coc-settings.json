@@ -12,9 +12,7 @@
     "terraform": {
       "command": "terraform-ls",
       "args": [
-        "serve",
-        "--tf-exec",
-        "/home/mhendriks/.tfenv/bin/terraform"
+        "serve"
       ],
       "filetypes": [
         "terraform",
