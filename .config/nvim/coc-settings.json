@@ -28,7 +28,7 @@
     },
     "omnisharp": {
       "command": "OmniSharp",
-      "args": ["--lsp"],
+      "args": ["-lsp"],
       "filetypes": ["cs"],
       "rootPatterns": [".git", "*.sln", "*.csproj"]
     }
