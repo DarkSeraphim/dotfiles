@@ -133,6 +133,7 @@ export PATH=~/.tfenv/bin:$PATH
 complete -C $TERRAGRUNT_TFPATH terraform tf
 export win=/mnt/c/users/mevmh/
 export hm=$HOME/.config/home-manager/
+export dotfiles=$HOME/Github/dotfiles/
 export PATH=~/.local/bin:$PATH
 export PATH=~/.dotnet/tools:$PATH
 # Go
