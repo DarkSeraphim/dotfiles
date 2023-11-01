@@ -118,6 +118,8 @@ export EDITOR='nvim'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
