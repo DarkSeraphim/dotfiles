@@ -128,7 +128,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 if command -v kubectl > /dev/null; then source <(kubectl completion zsh); else echo "No kubectl?"; fi;
-if command -v kubectl-wrapper > /dev/null; then complete -o default -F __start_kubectl kubectl-wrapper; fi
+if command -v kubectl-wrapper > /dev/null; then complete -o default -F _kubectl kubectl-wrapper; fi
 
 export GPG_TTY=$(tty)
 export TERRAGRUNT_TFPATH=$HOME/.tfenv/bin/terraform
