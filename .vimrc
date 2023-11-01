@@ -52,6 +52,8 @@ Plug 'nvim-neotest/neotest-vim-test'
 " Plug 'evanleck/vim-svelte'
 " Plug 'hashivim/vim-terraform'
 Plug 'sheerun/vim-polyglot'
+Plug 'rfratto/vim-river'
+
 " Memes
 Plug 'edvb/catium.vim'
 Plug 'koron/nyancat-vim'
