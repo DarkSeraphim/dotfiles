@@ -35,9 +35,14 @@ Plug 'tpope/vim-fugitive'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+Plug 'nvim-lua/plenary.nvim'
+
+" Telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4'}
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 " Neotest
 Plug 'vim-test/vim-test'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
@@ -181,7 +186,7 @@ call SetupCommandAlias("WQ","wq")
 call SetupCommandAlias("Q","q")
 
 " Start with our file tree enabled
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 " Exit vim if our last open buffer is the file tree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -209,6 +214,23 @@ require("neotest").setup({
     }),
   },
 })
+local telescope = require("telescope")
+telescope.load_extension("fzf")
+telescope.setup {
+  pickers = {
+    find_files = {
+      hidden = true,
+			find_command = { "rg", "--files", "--glob", "!**/.git/*" },
+    }
+  }
+}
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 EOF
 endif
 
