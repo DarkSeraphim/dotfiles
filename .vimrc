@@ -76,6 +76,12 @@ set sts=2
 set shiftwidth=2
 set et
 
+" Folding with treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+nnoremap <CR> za
+
 " Allow us to do things based on file type (see vim/ftplugin)
 filetype plugin on
 
