@@ -80,10 +80,11 @@ set et
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
-nnoremap <CR> za
 
 " Allow us to do things based on file type (see vim/ftplugin)
 filetype plugin on
+
+autocmd FileType * if &ft !=# 'qf' | nnoremap <buffer> <CR> za | endif
 
 " Always have our sign gutter enabled, keeps the width consistent
 let g:ale_sign_column_always = 1
