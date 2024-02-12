@@ -127,9 +127,6 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-if command -v kubectl > /dev/null; then source <(kubectl completion zsh); else echo "No kubectl?"; fi;
-if command -v kubectl-wrapper > /dev/null; then complete -o default -F _kubectl kubectl-wrapper; fi
-
 export GPG_TTY=$(tty)
 export TERRAGRUNT_TFPATH=$HOME/.tfenv/bin/terraform
 export PATH=~/.tfenv/bin:$PATH
@@ -144,6 +141,13 @@ export PATH=$PATH:/usr/local/go/bin
 if command -v go > /dev/null; then
   export PATH=$PATH:$(go env GOPATH)/bin
 fi
+
+if command -v kubectl > /dev/null; then
+  source <(command kubectl completion zsh); 
+else echo "No kubectl?"; fi;
+
+if command -v kubectl-wrapper > /dev/null; then compdef kubectl-wrapper=kubectl; fi
+
 
 source ~/.bash_aliases
 if [ -f "$HOME/.cargo/env" ]; then . ~/.cargo/env; fi
