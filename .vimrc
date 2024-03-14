@@ -34,6 +34,7 @@ Plug 'preservim/tagbar'
 Plug 'tpope/vim-fugitive'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'unblevable/quick-scope'
 
 Plug 'nvim-lua/plenary.nvim'
 
@@ -84,7 +85,9 @@ set nofoldenable
 " Allow us to do things based on file type (see vim/ftplugin)
 filetype plugin on
 
-autocmd FileType * if &ft !=# 'qf' | nnoremap <buffer> <CR> za | endif
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+autocmd FileType * if &ft !=# 'yaml' | nnoremap <buffer> <CR> za | endif
 
 " Always have our sign gutter enabled, keeps the width consistent
 let g:ale_sign_column_always = 1
