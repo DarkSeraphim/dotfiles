@@ -49,6 +49,9 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-vim-test'
 
+" Indent line guides
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " These are highlighting plugins, per language
 " Plug 'udalov/kotlin-vim'
 " Plug 'vim-python/python-syntax'
@@ -240,6 +243,8 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+require("ibl").setup()
 
 EOF
 endif
