@@ -90,7 +90,7 @@ filetype plugin on
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-autocmd FileType * if &ft !=# 'yaml' | nnoremap <buffer> <CR> za | endif
+autocmd FileType * if &ft ==# 'yaml' | nnoremap <buffer> <CR> za | endif
 
 " Always have our sign gutter enabled, keeps the width consistent
 let g:ale_sign_column_always = 1
