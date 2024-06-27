@@ -232,6 +232,8 @@ local telescope = require("telescope")
 local select_one_or_multi = function(prompt_bufnr)
   local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
   local multi = picker:get_multi_selection()
+  print("Working")
+  print(vim.inspect(multi))
   if not vim.tbl_isempty(multi) then
     require('telescope.actions').close(prompt_bufnr)
     for _, j in pairs(multi) do
