@@ -251,11 +251,13 @@ end
 telescope.load_extension("fzf")
 telescope.setup {
   defaults = {
-    i = {
-      ['<CR>'] = select_one_or_multi,
-    },
-    n = {
-      ['<CR>'] = select_one_or_multi,
+    mappings = {
+      i = {
+        ['<CR>'] = select_one_or_multi,
+      },
+      n = {
+        ['<CR>'] = select_one_or_multi,
+      }
     }
   },
   pickers = {
