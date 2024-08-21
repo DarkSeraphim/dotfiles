@@ -39,7 +39,7 @@ Plug 'unblevable/quick-scope'
 Plug 'nvim-lua/plenary.nvim'
 
 " Telescope
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8'}
+Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master'}
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Neotest
